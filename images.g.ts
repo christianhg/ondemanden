@@ -5,10 +5,10 @@ namespace myImages {
         switch(helpers.stringTrim(name)) {
             case "image1":
             case "helt":return img`
-. . . . . . . f 1 f . . . . . .
-. . . . . . f 7 7 f . . . . . .
-. . . . . f 7 7 7 f . . . . . .
-. . . . f 7 7 7 7 f . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . .
+. . . . . . f f f . . . . . . .
+. . . . . f 1 7 1 f . . . . . .
 . . . . f 7 7 7 7 7 f . . . . .
 . . . f 7 7 7 7 7 7 7 f . . . .
 . . . f 1 1 1 1 1 1 1 1 f . . .
@@ -19,8 +19,8 @@ namespace myImages {
 . . . . f 7 7 7 7 7 7 f . . . .
 . . . f 7 7 7 7 7 7 7 7 f . . .
 . . . f e e e e 5 e e e f . . .
-. . . . f 7 7 f f 7 7 f . . . .
 . . . f e e e f f e e e f . . .
+. . . . f f f . . f f f . . . .
 `;
             case "image2":
             case "nisse":return img`

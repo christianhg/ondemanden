@@ -36,6 +36,7 @@ function lavFjende () {
         fjende = sprites.create(assets.image`nisse`, SpriteKind.Enemy)
         fjende.follow(helt, 30 + bane * 10)
     }
+    fjende.setFlag(SpriteFlag.GhostThroughWalls, true)
     placer(fjende)
     if (Math.abs(fjende.x - helt.x) < 48 && Math.abs(fjende.y - helt.y) < 48) {
         sprites.destroy(fjende)
