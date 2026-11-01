@@ -337,11 +337,9 @@ function lavFjende() {
     let fjende: Sprite = null
     if (bane == 2 && Math.percentChance(30)) {
         fjende = sprites.create(ondSnemandImg, SpriteKind.Enemy)
-        sprites.setDataNumber(fjende, "liv", 3)
         fjende.follow(helt, 20)
     } else {
         fjende = sprites.create(ondNisseImg, SpriteKind.Enemy)
-        sprites.setDataNumber(fjende, "liv", 1)
         fjende.follow(helt, 30 + bane * 10)
     }
     tiles.placeOnRandomTile(fjende, gulvTile())
@@ -413,15 +411,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprite.destroy()
-    sprites.changeDataNumberBy(otherSprite, "liv", -1)
-    if (sprites.readDataNumber(otherSprite, "liv") <= 0) {
-        if (Math.percentChance(30)) {
-            lavModgift(otherSprite.x, otherSprite.y)
-        }
-        otherSprite.destroy(effects.disintegrate, 300)
-    } else {
-        otherSprite.startEffect(effects.ashes, 200)
+    if (Math.percentChance(30)) {
+        lavModgift(otherSprite.x, otherSprite.y)
     }
+    otherSprite.destroy(effects.disintegrate, 300)
 })
 
 // Session 4: baner og Ondemanden
