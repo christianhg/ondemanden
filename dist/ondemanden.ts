@@ -302,6 +302,7 @@ let retningX = 0
 let retningY = -80
 let ondemanden: Sprite = null
 let modgiftMaal = 20
+let doerMaal = 10
 
 let helt = sprites.create(heltImg, SpriteKind.Player)
 controller.moveSprite(helt, 80, 80)
@@ -419,8 +420,12 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 
 // Session 4: baner og Ondemanden
 scene.onOverlapTile(SpriteKind.Player, doerImg, function (sprite, location) {
-    bane = 2
-    startBane()
+    if (info.score() >= doerMaal) {
+        bane = 2
+        startBane()
+    } else {
+        helt.sayText("Du skal have " + doerMaal + " modgift\!", 500)
+    }
 })
 
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Julemand, function (sprite, otherSprite) {
