@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Modgift = SpriteKind.create()
     export const Julemand = SpriteKind.create()
     export const Snefnug = SpriteKind.create()
+    export const Doer = SpriteKind.create()
 }
 
 let bane = 1
@@ -27,9 +28,13 @@ function startBane() {
     sprites.destroyAllSpritesOfKind(SpriteKind.Food)
     sprites.destroyAllSpritesOfKind(SpriteKind.Modgift)
     sprites.destroyAllSpritesOfKind(SpriteKind.Julemand)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Doer)
     if (bane == 1) {
         tiles.setCurrentTilemap(bane1)
         tiles.placeOnTile(helt, tiles.getTileLocation(2, 2))
+        let doer = sprites.create(doerImg, SpriteKind.Doer)
+        tiles.placeOnTile(doer, tiles.getTileLocation(20, 8))
+        doer.z = -1
         helt.sayText("Saml " + modgiftMaal + " modgift!", 2000)
     } else {
         tiles.setCurrentTilemap(bane2)
@@ -126,7 +131,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 })
 
 // Session 4: baner og Ondemanden
-scene.onOverlapTile(SpriteKind.Player, {{doer}}, function (sprite, location) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Doer, function (sprite, otherSprite) {
     if (info.score() >= doerMaal) {
         bane = 2
         startBane()
