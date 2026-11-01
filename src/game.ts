@@ -126,7 +126,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 })
 
 // Session 4: baner og Ondemanden
-scene.onOverlapTile(SpriteKind.Player, doerImg, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, {{doer}}, function (sprite, location) {
     if (info.score() >= doerMaal) {
         bane = 2
         startBane()

@@ -419,7 +419,24 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 })
 
 // Session 4: baner og Ondemanden
-scene.onOverlapTile(SpriteKind.Player, doerImg, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, img`
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+    1 1 1 1 1 e e e e e e 1 1 1 1 1
+    1 1 1 1 e e e e e e e e 1 1 1 1
+    1 1 1 e e 4 4 4 4 4 4 e e 1 1 1
+    1 1 1 e 4 4 4 7 7 4 4 4 e 1 1 1
+    1 1 1 e 4 4 7 2 2 7 4 4 e 1 1 1
+    1 1 1 e 4 4 7 4 4 7 4 4 e 1 1 1
+    1 1 1 e 4 4 4 7 7 4 4 4 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 4 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 5 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 4 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 4 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 4 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 4 e 1 1 1
+    1 1 1 e 4 4 4 4 4 4 4 4 e 1 1 1
+    1 1 1 e e e e e e e e e e 1 1 1
+`, function (sprite, location) {
     if (info.score() >= doerMaal) {
         bane = 2
         startBane()

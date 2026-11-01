@@ -414,6 +414,11 @@ def main():
         f.write(assets)
     with open(os.path.join(root, "src", "game.ts")) as f:
         game = f.read()
+    # {{name}} inlines an image literal. Needed where MakeCode's Blocks
+    # round-trip would otherwise move the use above the const declaration.
+    for name, rows in {**sprites, **tiles}.items():
+        game = game.replace("{{" + name + "}}", to_img_literal(rows))
+    assert "{{" not in game, "unknown {{image}} placeholder in game.ts"
     os.makedirs(os.path.join(root, "dist"), exist_ok=True)
     with open(os.path.join(root, "dist", "ondemanden.ts"), "w") as f:
         f.write(assets + "\n" + game)
