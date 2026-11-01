@@ -1,9 +1,11 @@
 """Pixel art for Ondemanden. Run: python3 tools/art.py
 
-Writes preview/sheet.png and src/assets.ts (MakeCode img`` literals).
+Writes the MakeCode asset files (images.g.*, tilemap.g.*) and previews.
 '.' is transparent; 0-f are MakeCode Arcade palette indices.
 """
 
+import base64
+import json
 import os
 import struct
 import zlib
@@ -18,24 +20,6 @@ PALETTE = {
 }
 
 SPRITES = {
-    "doer": """
-................
-.....eeeeee.....
-....eeeeeeee....
-...ee444444ee...
-...e44477444e...
-...e44722744e...
-...e44744744e...
-...e44477444e...
-...e44444444e...
-...e44444445e...
-...e44444444e...
-...e44444444e...
-...e44444444e...
-...e44444444e...
-...e44444444e...
-...eeeeeeeeee...
-""",
     "helt": """
 ........1.......
 .......77.......
@@ -54,7 +38,7 @@ SPRITES = {
 .....77..77.....
 ....eee..eee....
 """,
-    "ond_nisse": """
+    "nisse": """
 ........2.......
 .......22.......
 ......222.......
@@ -157,7 +141,7 @@ c1119c
 919
 .9.
 """,
-    "ond_snemand": """
+    "snemand": """
 ......ffff......
 ......ffff......
 .....ffffff.....
@@ -178,6 +162,24 @@ c1119c
 }
 
 TILES = {
+    "doer": """
+................
+.....eeeeee.....
+....eeeeeeee....
+...ee444444ee...
+...e44477444e...
+...e44722744e...
+...e44744744e...
+...e44477444e...
+...e44444444e...
+...e44444445e...
+...e44444444e...
+...e44444444e...
+...e44444444e...
+...e44444444e...
+...e44444444e...
+...eeeeeeeeee...
+""",
     "sne": """
 1111111111111111
 1111111111911111
@@ -244,7 +246,7 @@ TILES["mur"] = gen_bricks()
 
 
 MAPS = {
-    # T gran (mur), . sne, # mur, _ gulv
+    # T gran (mur), D doer, . sne, # mur, _ gulv
     "bane1": """
 TTTTTTTTTTTTTTTTTTTTTTTT
 T......................T
@@ -254,7 +256,7 @@ T...........T......T...T
 T..T...................T
 T........T.......T.....T
 T......................T
-T...T...........T......T
+T...T...........T...D..T
 T.........T............T
 T..................T...T
 T.....T................T
@@ -283,24 +285,9 @@ TTTTTTTTTTTTTTTTTTTTTTTT
 """,
 }
 
-MAP_TILES = {".": "sne", "T": "gran", "_": "gulv", "#": "mur"}
-TILE_ORDER = ["sne", "gran", "gulv", "mur"]
+MAP_TILES = {".": "sne", "T": "gran", "D": "doer", "_": "gulv", "#": "mur"}
+TILE_ORDER = ["sne", "gran", "doer", "gulv", "mur"]
 WALLS = {"T", "#"}
-
-
-def map_literal(name, rows):
-    h, w = len(rows), len(rows[0])
-    data = f"{w:02x}00{h:02x}00" + "".join(f"{TILE_ORDER.index(MAP_TILES[c]):02x}" for r in rows for c in r)
-    walls = [ "".join("2" if c in WALLS else "." for c in r) for r in rows]
-    tiles = ", ".join(f"{t}Img" for t in TILE_ORDER)
-    return (
-        f"const {name} = tiles.createTilemap(\n"
-        f"    hex`{data}`,\n"
-        f"    {to_img_literal(walls)},\n"
-        f"    [{tiles}],\n"
-        f"    TileScale.Sixteen\n"
-        f")"
-    )
 
 
 def grid(s):
@@ -311,7 +298,7 @@ def grid(s):
     return rows
 
 
-OUTLINED = {"helt", "ond_nisse", "ondemanden", "julemanden"}
+OUTLINED = {"helt", "nisse", "ondemanden", "julemanden"}
 
 
 def outline(rows, color="f"):
@@ -378,51 +365,126 @@ def render_sheet(items, path, scale=8, pad=2, bg_tile=None):
     write_png(path, big)
 
 
-def camel(name):
-    head, *rest = name.split("_")
-    return head + "".join(p.capitalize() for p in rest)
+
+def img_literal(rows, indent=""):
+    body = "\n".join(indent + " ".join(r) for r in rows)
+    return "img`\n" + body + "\n" + indent + "`"
 
 
-def to_img_literal(rows):
-    body = "\n".join("    " + " ".join(ch if ch != "." else "." for ch in r) for r in rows)
-    return "img`\n" + body + "\n`"
+def encode_image(rows):
+    """MakeCode f4 image buffer: 8-byte header, then columns of 4-bit pixels,
+    low nibble first, each column padded to a multiple of 4 bytes."""
+    h, w = len(rows), len(rows[0])
+    bh = ((h * 4 + 31) >> 5) << 2
+    buf = bytearray([0x87, 0x04, w & 0xFF, w >> 8, h & 0xFF, h >> 8, 0, 0])
+    for x in range(w):
+        col = bytearray(bh)
+        for y in range(h):
+            ch = rows[y][x]
+            v = 0 if ch == "." else int(ch, 16)
+            col[y >> 1] |= v << 4 if y & 1 else v
+        buf += col
+    return base64.b64encode(bytes(buf)).decode()
+
+
+def encode_tilemap(rows):
+    h, w = len(rows), len(rows[0])
+    data = "10" + f"{w & 0xFF:02x}{w >> 8:02x}{h & 0xFF:02x}{h >> 8:02x}"
+    data += "".join(f"{TILE_ORDER.index(MAP_TILES[c]) + 1:02x}" for r in rows for c in r)
+    data += "".join("2" if c in WALLS else "0" for r in rows for c in r)
+    return base64.b64encode(data.encode()).decode()
+
+
+def tilemap_ts(rows):
+    h, w = len(rows), len(rows[0])
+    data = f"{w & 0xFF:02x}{w >> 8:02x}{h & 0xFF:02x}{h >> 8:02x}"
+    data += "".join(f"{TILE_ORDER.index(MAP_TILES[c]) + 1:02x}" for r in rows for c in r)
+    walls = ["".join("2" if c in WALLS else "." for c in r) for r in rows]
+    tileset = ", ".join(["myTiles.transparency16"] + [f"myTiles.tile{i + 1}" for i in range(len(TILE_ORDER))])
+    return f"tiles.createTilemap(hex`{data}`, {img_literal(walls)}, [{tileset}], TileScale.Sixteen)"
+
+
+TRANSPARENT16 = ["." * 16] * 16
+
+
+def write_project(root, sprites, tiles):
+    header = "// Auto-generated code. Do not edit.\n"
+
+    # images.g.*
+    jres = {}
+    cases = []
+    for i, (name, rows) in enumerate(sprites.items(), start=1):
+        jres[f"image{i}"] = {"data": encode_image(rows), "mimeType": "image/x-mkcd-f4", "displayName": name}
+        cases.append(f'            case "image{i}":\n            case "{name}":return {img_literal(rows)};')
+    jres["*"] = {"mimeType": "image/x-mkcd-f4", "dataEncoding": "base64", "namespace": "myImages"}
+    with open(os.path.join(root, "images.g.jres"), "w") as f:
+        json.dump(jres, f, indent=4)
+    with open(os.path.join(root, "images.g.ts"), "w") as f:
+        f.write(header + "namespace myImages {\n\n"
+                '    helpers._registerFactory("image", function(name: string) {\n'
+                "        switch(helpers.stringTrim(name)) {\n" + "\n".join(cases) + "\n"
+                "        }\n        return null;\n    })\n\n}\n" + header)
+
+    # tilemap.g.*
+    jres = {"transparency16": {"data": encode_image(TRANSPARENT16), "mimeType": "image/x-mkcd-f4", "tilemapTile": True}}
+    consts = ["    //% fixedInstance jres blockIdentity=images._tile\n    export const transparency16 = image.ofBuffer(hex``);"]
+    tile_cases = ['            case "transparency16":return transparency16;']
+    for i, name in enumerate(TILE_ORDER, start=1):
+        jres[f"tile{i}"] = {"data": encode_image(tiles[name]), "mimeType": "image/x-mkcd-f4", "tilemapTile": True, "displayName": name}
+        consts.append(f"    //% fixedInstance jres blockIdentity=images._tile\n    export const tile{i} = image.ofBuffer(hex``);")
+        tile_cases.append(f'            case "{name}":\n            case "tile{i}":return tile{i};')
+    map_cases = []
+    tileset = ["myTiles.transparency16"] + [f"myTiles.tile{i + 1}" for i in range(len(TILE_ORDER))]
+    for name, m in MAPS.items():
+        rows = grid(m)
+        jres[name] = {"id": name, "mimeType": "application/mkcd-tilemap", "data": encode_tilemap(rows), "tileset": tileset, "displayName": name}
+        map_cases.append(f'            case "{name}":return {tilemap_ts(rows)};')
+    jres["*"] = {"mimeType": "image/x-mkcd-f4", "dataEncoding": "base64", "namespace": "myTiles"}
+    with open(os.path.join(root, "tilemap.g.jres"), "w") as f:
+        json.dump(jres, f, indent=4)
+    with open(os.path.join(root, "tilemap.g.ts"), "w") as f:
+        f.write(header + "namespace myTiles {\n" + "\n".join(consts) + "\n\n"
+                '    helpers._registerFactory("tilemap", function(name: string) {\n'
+                "        switch(helpers.stringTrim(name)) {\n" + "\n".join(map_cases) + "\n"
+                "        }\n        return null;\n    })\n\n"
+                '    helpers._registerFactory("tile", function(name: string) {\n'
+                "        switch(helpers.stringTrim(name)) {\n" + "\n".join(tile_cases) + "\n"
+                "        }\n        return null;\n    })\n\n}\n" + header)
+
+
+def render_maps(root):
+    tiles = {k: grid(v) for k, v in TILES.items()}
+    for k in ("gran", "doer"):
+        tiles[k] = snow_fill(tiles[k])
+    for name, m in MAPS.items():
+        px = []
+        for r in grid(m):
+            for y in range(16):
+                line = []
+                for c in r:
+                    line += [PALETTE[ch] or (255, 255, 255) for ch in tiles[MAP_TILES[c]][y]]
+                px.append(line)
+        write_png(os.path.join(root, "preview", f"{name}.png"),
+                  [[p for p in row for _ in range(2)] for row in px for _ in range(2)])
 
 
 def main():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     os.makedirs(os.path.join(root, "preview"), exist_ok=True)
-    os.makedirs(os.path.join(root, "src"), exist_ok=True)
 
     sprites = {k: outline(grid(v)) if k in OUTLINED else grid(v) for k, v in SPRITES.items()}
     tiles = {k: grid(v) for k, v in TILES.items()}
-    tiles["gran"] = snow_fill(tiles["gran"])
+    for k in ("gran", "doer"):
+        tiles[k] = snow_fill(tiles[k])
 
     render_sheet(list(sprites.values()), os.path.join(root, "preview", "sprites-checker.png"))
     render_sheet(list(sprites.values()), os.path.join(root, "preview", "sprites-on-snow.png"), bg_tile=TILES["sne"])
     render_sheet(list(tiles.values()), os.path.join(root, "preview", "tiles.png"))
-
-    out = ["// Generated by tools/art.py. Edit the art there, not here.", ""]
-    for name, rows in {**sprites, **tiles}.items():
-        out.append(f"const {camel(name)}Img = {to_img_literal(rows)}")
-        out.append("")
-    for name, m in MAPS.items():
-        out.append(map_literal(name, grid(m)))
-        out.append("")
-    assets = "\n".join(out)
-    with open(os.path.join(root, "src", "assets.ts"), "w") as f:
-        f.write(assets)
-    with open(os.path.join(root, "src", "game.ts")) as f:
-        game = f.read()
-    # {{name}} inlines an image literal. Needed where MakeCode's Blocks
-    # round-trip would otherwise move the use above the const declaration.
-    for name, rows in {**sprites, **tiles}.items():
-        game = game.replace("{{" + name + "}}", to_img_literal(rows))
-    assert "{{" not in game, "unknown {{image}} placeholder in game.ts"
-    os.makedirs(os.path.join(root, "dist"), exist_ok=True)
-    with open(os.path.join(root, "dist", "ondemanden.ts"), "w") as f:
-        f.write(assets + "\n" + game)
-    print("sprites:", ", ".join(sprites))
-    print("tiles:", ", ".join(tiles))
+    render_maps(root)
+    write_project(root, sprites, tiles)
+    print("images:", ", ".join(sprites))
+    print("tiles:", ", ".join(TILE_ORDER))
+    print("maps:", ", ".join(MAPS))
 
 
 if __name__ == "__main__":

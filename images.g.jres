@@ -1,0 +1,52 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAPD//Q//8ADwf9Hd/efvAH930d995+fwd3fR3X3n5393d9Hdcuf/cXd30d1yV////3fR3X3n5wAAf9HffefnAADw0d395+8AAAD//Q//8AAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "helt"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPD//w/wDwAAL/Ld8c/8AP8i8tIRz8zwIiLS3RERzC8iItLd8RH8IiIi0t3xEfz/LyLS3RERzADwL/LSEc/MAADw8t3xz/wAAAD//w/wDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "nisse"
+    },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAzMwAAAAAAMCqqgwAAMAAHDqjygDgzswRqqrKAODOERGqqsoA4M4REaqlygDgzswRqqrKAADAAByqqsoAAAAAwKqqDAAABQAAzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "modgift"
+    },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO7uAAAAAADg5O4OAAAAAE7u7u4AAAAATu7u7gAAAADu7u7uAAAAAO7u7u4AAAAA4O7uDgAAAAAA7u4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "pebernoed"
+    },
+    "image5": {
+        "data": "hwQGAAYAAAAAzAAAwBEMABwRyQAcEckAwJEMAADMAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "snebold"
+    },
+    "image6": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAA//8AAPD///8iL/8AH90dESIv8vAS/d0RIS/yLxL90vEhL/IiEt0dHxEv8iIS3R0fES//IhLdHR8RJf8iEt0dHxEv8iES/dLxIS/y/xL93REhL/IAH90dESIv8gDw////Ii//AAAAAAD//wAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "ondemanden"
+    },
+    "image7": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAA//8AAPD///8iL/8AH90RESIv8vAS3RMRIS/yLxL9LREhL/IiEt0REhEv8iIS3RESES//IhLdERIRJf8iEt0REhEv8iES/S0RIS/y/xLdExEhL/IAH90RESIv8gDw////Ii//AAAAAAD//wAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "julemanden"
+    },
+    "image8": {
+        "data": "hwQDAAMAAACQAAAAGQkAAJAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "snefnug"
+    },
+    "image9": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMzAAAAAAAwBERDAAAzAwSERHBAM8RwRIREcH/HxIfEhERwf8fER8SERHB/x9BHxIREcH/H0IfEvHxwQDPEcESERHBAADMDBIREcEAAAAAwBERDAAAAAAAzMwAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "snemand"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}

@@ -3,14 +3,15 @@
 A four-session MakeCode Arcade course game for kids aged 8-10. Santa has
 turned evil. Collect enough antidote (modgift) to turn him good again.
 
-## Play it
+This repo is a regular MakeCode Arcade project. Open it in the editor via
+Import, then GitHub (or Import URL if the repo is public).
 
-1. Open https://arcade.makecode.com and start a new project.
-2. Switch to the JavaScript tab.
-3. Replace everything with the contents of `dist/ondemanden.ts`.
+## Working on it
 
-## Change the art or maps
-
-Edit `tools/art.py`, then run `python3 tools/art.py`. It regenerates
-`src/assets.ts`, the previews in `preview/`, and `dist/ondemanden.ts`.
-Game logic lives in `src/game.ts`.
+- `main.ts` is the game. Keep it to code that Blocks can show; no gray
+  JavaScript blocks.
+- `tools/art.py` holds the pixel art and maps. Run `python3 tools/art.py`
+  to regenerate `images.g.*`, `tilemap.g.*`, and the PNGs in `preview/`.
+- `tools/check.sh` compiles with the MakeCode Arcade CLI, regenerates
+  `main.blocks`, and fails on errors or gray blocks. Run it before every
+  commit. The first run installs the CLI into `/tmp/pxtwork`.
