@@ -391,7 +391,11 @@ def encode_tilemap(rows):
     h, w = len(rows), len(rows[0])
     data = "10" + f"{w & 0xFF:02x}{w >> 8:02x}{h & 0xFF:02x}{h >> 8:02x}"
     data += "".join(f"{TILE_ORDER.index(MAP_TILES[c]) + 1:02x}" for r in rows for c in r)
-    data += "".join("2" if c in WALLS else "0" for r in rows for c in r)
+    cells = ["2" if c in WALLS else "0" for r in rows for c in r]
+    if len(cells) % 2:
+        cells.append("0")
+    # Two cells per byte, low nibble first, so each hex pair reads second-first.
+    data += "".join(cells[i + 1] + cells[i] for i in range(0, len(cells), 2))
     return base64.b64encode(data.encode()).decode()
 
 
