@@ -131,7 +131,7 @@ scene.onOverlapTile(SpriteKind.Player, doerImg, function (sprite, location) {
         bane = 2
         startBane()
     } else {
-        helt.sayText("Du skal have " + doerMaal + " modgift\!", 500)
+        helt.sayText("Du skal have " + doerMaal + " modgift!", 500)
     }
 })
 
