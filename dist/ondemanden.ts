@@ -368,7 +368,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Modgift, function (sprite, other
     music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
 })
 
-// Session 2: onde nisser og pebernoedder
+// Session 2: onde nisser og pebernødder
 game.onUpdateInterval(2000, function () {
     if (sprites.allOfKind(SpriteKind.Enemy).length < 4 + bane * 2) {
         lavFjende()
