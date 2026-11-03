@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # Compile the project with the MakeCode Arcade CLI, then regenerate
 # main.blocks from main.ts and fail if any statement decompiles to a gray
-# JavaScript block. Usage: tools/check.sh
+# JavaScript block. Usage: tools/check.sh [main.ts] [main.blocks]
 set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." >/dev/null && pwd)"
+src="${1:-$root/main.ts}"
+blocks_out="${2:-$root/main.blocks}"
 work="${PXT_WORK:-/tmp/pxtwork}"
 core="$work/node_modules/pxt-core"
 target="$work/node_modules/pxt-arcade"
@@ -48,7 +50,8 @@ fi
 proj="$work/proj"
 rm -rf "$proj"
 mkdir -p "$proj"
-cp "$root"/{pxt.json,main.ts,README.md,assets.json,images.g.jres,images.g.ts,tilemap.g.jres,tilemap.g.ts} "$proj/"
+cp "$root"/{pxt.json,README.md,assets.json,images.g.jres,images.g.ts,tilemap.g.jres,tilemap.g.ts} "$proj/"
+cp "$src" "$proj/main.ts"
 : > "$proj/main.blocks"
 # The decompiler resolves pxt-core files relative to the project.
 mkdir -p "$proj/node_modules"
@@ -75,5 +78,5 @@ if [ -n "$gray" ]; then
     python3 -c 'import html,sys; print(html.unescape(sys.stdin.read()))' <<<"$gray"
     exit 1
 fi
-cp "$proj/main.blocks" "$root/main.blocks"
-echo "blocks ok ($(grep -o '<block ' "$root/main.blocks" | wc -l | tr -d ' ') blocks)"
+cp "$proj/main.blocks" "$blocks_out"
+echo "blocks ok ($(grep -o '<block ' "$blocks_out" | wc -l | tr -d ' ') blocks)"

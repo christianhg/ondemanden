@@ -1,5 +1,6 @@
 namespace SpriteKind {
     export const Modgift = SpriteKind.create()
+    export const Snemand = SpriteKind.create()
     export const Julemand = SpriteKind.create()
     export const Snefnug = SpriteKind.create()
 }
@@ -10,42 +11,19 @@ function placer (ting: Sprite) {
         tiles.placeOnRandomTile(ting, assets.tile`gulv`)
     }
 }
-function startBane () {
-    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Food)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Modgift)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Julemand)
-    if (bane == 1) {
-        tiles.setCurrentTilemap(tilemap`bane1`)
-        tiles.placeOnTile(helt, tiles.getTileLocation(2, 2))
-        helt.sayText("Saml modgift!", 2000, false)
-    } else {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`doer`, function (sprite, location) {
+    if (info.score() >= 10) {
+        bane = 2
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Snemand)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Modgift)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Food)
         tiles.setCurrentTilemap(tilemap`bane2`)
         tiles.placeOnTile(helt, tiles.getTileLocation(2, 2))
         ondemanden = sprites.create(assets.image`ondemanden`, SpriteKind.Julemand)
         tiles.placeOnTile(ondemanden, tiles.getTileLocation(14, 10))
         ondemanden.follow(helt, 20)
         helt.sayText("Find Ondemanden!", 2000, false)
-    }
-}
-function lavFjende () {
-    if (bane == 2 && Math.percentChance(30)) {
-        fjende = sprites.create(assets.image`snemand`, SpriteKind.Enemy)
-        fjende.follow(helt, 20)
-    } else {
-        fjende = sprites.create(assets.image`nisse`, SpriteKind.Enemy)
-        fjende.follow(helt, 30 + bane * 10)
-    }
-    fjende.setFlag(SpriteFlag.GhostThroughWalls, true)
-    placer(fjende)
-    if (Math.abs(fjende.x - helt.x) < 48 && Math.abs(fjende.y - helt.y) < 48) {
-        sprites.destroy(fjende)
-    }
-}
-scene.onOverlapTile(SpriteKind.Player, assets.tile`doer`, function (sprite, location) {
-    if (info.score() >= 10) {
-        bane = 2
-        startBane()
     } else {
         helt.sayText("Døren er låst! Saml 10 modgift.", 500, false)
     }
@@ -56,6 +34,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Modgift, function (sprite, other
     music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    info.changeLifeBy(-1)
+    scene.cameraShake(4, 300)
+    music.play(music.melodyPlayable(music.smallCrash), music.PlaybackMode.InBackground)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Snemand, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     info.changeLifeBy(-1)
     scene.cameraShake(4, 300)
@@ -94,9 +78,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Julemand, function (sprite, othe
 })
 let snefnug: Sprite = null
 let pebernoed: Sprite = null
+let snemand: Sprite = null
+let nisse: Sprite = null
 let modgift: Sprite = null
 let snebold: Sprite = null
-let fjende: Sprite = null
 let ondemanden: Sprite = null
 let retningY = 0
 let retningX = 0
@@ -105,13 +90,14 @@ let helt: Sprite = null
 game.splash("Ondemanden", "Red julen!")
 helt = sprites.create(assets.image`helt`, SpriteKind.Player)
 controller.moveSprite(helt, 80, 80)
+tiles.setCurrentTilemap(tilemap`bane1`)
+tiles.placeOnTile(helt, tiles.getTileLocation(2, 2))
 scene.cameraFollowSprite(helt)
+info.setScore(0)
+info.setLife(3)
 bane = 1
 retningX = 0
 retningY = -80
-info.setScore(0)
-info.setLife(3)
-startBane()
 game.onUpdate(function () {
     if (helt.vx != 0 || helt.vy != 0) {
         retningX = helt.vx
@@ -126,7 +112,18 @@ game.onUpdateInterval(2000, function () {
 })
 game.onUpdateInterval(2000, function () {
     if (sprites.allOfKind(SpriteKind.Enemy).length < 6) {
-        lavFjende()
+        nisse = sprites.create(assets.image`nisse`, SpriteKind.Enemy)
+        nisse.setFlag(SpriteFlag.GhostThroughWalls, true)
+        tiles.placeOnRandomTile(nisse, assets.tile`portal`)
+        nisse.follow(helt, 30 + bane * 10)
+    }
+})
+game.onUpdateInterval(5000, function () {
+    if (sprites.allOfKind(SpriteKind.Snemand).length < 2) {
+        snemand = sprites.create(assets.image`snemand`, SpriteKind.Snemand)
+        snemand.setFlag(SpriteFlag.GhostThroughWalls, true)
+        tiles.placeOnRandomTile(snemand, assets.tile`portal`)
+        snemand.follow(helt, 20)
     }
 })
 game.onUpdateInterval(10000, function () {

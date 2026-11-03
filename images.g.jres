@@ -5,44 +5,89 @@
         "displayName": "helt"
     },
     "image2": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPD//w/wDwAAL/Ld8c/8AP8i8tIRz8zwIiLS3RERzC8iItLd8RH8IiIi0t3xEfz/LyLS3RERzADwL/LSEc/MAADw8t3xz/wAAAD//w/wDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAPAPAA8AAAAA3/3w/vD/DwDw3+/u7+7/APDd7u/u7v8AAP/u3u7uDwAA8O4u7e4PAADw7i7t7g8AAP/u3u7uDwDw3e7v7u7/APDf7+7v7v8A3/3w/vD/DwDwDwAPAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "nisse"
+        "displayName": "helt-rensdyr"
     },
     "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAA/w8AAAAA/////w8EAPAf8S8R8QQA8B8fIRERBADw/0EhEREAAPD/QSEREQAA8B8fIRERBADwH/EvEfEEAAD/////DwQAAAAA/w8AAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "helt-pingvin"
+    },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAADwDwAAAAAAAO/xAA8AAAAA7/7/8QAA///v7u7+APDu7u/u7v4A7/7u7u7u/gDv7h7u4vIPAO/uHu7i8g8A7/7u7u7u/gDw7u7v7u7+AAD//+/u7v4AAAAA7/7/8QAAAADv8QAPAAAAAPAPAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "helt-kagemand"
+    },
+    "image5": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAzMwAAAAAAMCqqgwAAMAAHDqjygDgzswRqqrKAODOERGqqsoA4M4REaqlygDgzswRqqrKAADAAByqqsoAAAAAwKqqDAAABQAAzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "modgift"
     },
-    "image4": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO7uAAAAAADg5O4OAAAAAE7u7u4AAAAATu7u7gAAAADu7u7uAAAAAO7u7u4AAAAA4O7uDgAAAAAA7u4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "pebernoed"
-    },
-    "image5": {
-        "data": "hwQGAAYAAAAAzAAAwBEMABwRyQAcEckAwJEMAADMAAA=",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "snebold"
-    },
     "image6": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAA//8AAPD///8iL/8AH90dESIv8vAS/d0RIS/yLxL90vEhL/IiEt0dHxEv8iIS3R0fES//IhLdHR8RJf8iEt0dHxEv8iES/dLxIS/y/xL93REhL/IAH90dESIv8gDw////Ii//AAAAAAD//wAAAAAAAAAAAA==",
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/DwAAAAAA8BLyAAAAAAAvEvIAAAAAAC//DwAAAAAAH////////w8fISEhISEh8fAhISEhISHxAP///////w8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "ondemanden"
+        "displayName": "slikstok"
     },
     "image7": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAA//8AAPD///8iL/8AH90RESIv8vAS3RMRIS/yLxL9LREhL/IiEt0REhEv8iIS3RESES//IhLdERIRJf8iEt0REhEv8iES/S0RIS/y/xLdExEhL/IAH90RESIv8gDw////Ii//AAAAAAD//wAAAAAAAAAAAA==",
+        "data": "hwQQABAAAAAAAPAAAAAAAAAAXw8AAP8AAABf9QD/VQ8AAF9V/1VVDwAAX1VVVfUAAPBfVVVVDwDwX1VVVfUAAF9VVVVVDwAAX1VVVVUPAADwX1VVVfUAAADwX1VVVQ8AAABfVVVV9QAAAF9V/1VVDwAAX/UA/1UPAABfDwAA/wAAAPAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "julemanden"
+        "displayName": "stjerne"
     },
     "image8": {
-        "data": "hwQDAAMAAACQAAAAGQkAAJAAAAA=",
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPD//w/wDwAAL/Ld8c/8AP8i8tIRz8zwIiLS3RERzC8iItLd8RH8IiIi0t3xEfz/LyLS3RERzADwL/LSEc/MAADw8t3xz/wAAAD//w/wDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "snefnug"
+        "displayName": "nisse"
     },
     "image9": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMzAAAAAAAwBERDAAAzAwSERHBAM8RwRIREcH/HxIfEhERwf8fER8SERHB/x9BHxIREcH/H0IfEvHxwQDPEcESERHBAADMDBIREcEAAAAAwBERDAAAAAAAzMwAAAAAAAAAAAAAAAAAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "snemand"
+    },
+    "image10": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAA/wDwAAAAAADdD+//8P//D//9/u7v7u7/3+3+7u7u7v/w7y7e7+7+DwDv7i7v7v4AAO/uLu/u/gDw7y7e7+7+D9/t/u7u7u7///3+7u/u7v/dD+//8P//D/8A8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "ond-rensdyr"
+    },
+    "image11": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAPAPAAAAAAAA7/EAAA8AAADv/v//8fD//+/u7u7+7+/u7+7u7v7uL/7u7u7u/u7u/u7i4v8P7u7+7uLi/w/uL/7u7u7u/u/v7u/u7u7+8P//7+7u7v4AAADv/v//8QAAAO/xAAAPAAAA8A8AAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "ond-kagemand"
+    },
+    "image12": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO7uAAAAAADg5O4OAAAAAE7u7u4AAAAATu7u7gAAAADu7u7uAAAAAO7u7u4AAAAA4O7uDgAAAAAA7u4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "pebernoed"
+    },
+    "image13": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREAAAAAABAQUQEAAAAAEQRROQAAAAARBRE5AAAAABEFETkAAAAAEREROQAAAAAQEREDgAAAAAAROQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "aebleskive"
+    },
+    "image14": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAA//8AAAAAAPDu7g8AAAAA7+7h/gAAAADv7u7uDwAAAO/u4e7+AAAA7+7uLu4PAADw7uHu7v4AAPDu7u7u/gAA7+7hLu4PAADv7u7u/gAAAO/u4e4PAAAA7+7u/gAAAADw7u4PAAAAAAD//wAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "kagehjerte"
+    },
+    "image15": {
+        "data": "hwQGAAYAAAAAzAAAwBEMABwRyQAcEckAwJEMAADMAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "snebold"
+    },
+    "image16": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAA//8AAPD///8iL/8AH90dESIv8vAS/d0RIS/yLxL90vEhL/IiEt0dHxEv8iIS3R0fES//IhLdHR8RJf8iEt0dHxEv8iES/dLxIS/y/xL93REhL/IAH90dESIv8gDw////Ii//AAAAAAD//wAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "ondemanden"
+    },
+    "image17": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAA//8AAPD///8iL/8AH90RESIv8vAS3RMRIS/yLxL9LREhL/IiEt0REhEv8iIS3RESES//IhLdERIRJf8iEt0REhEv8iES/S0RIS/y/xLdExEhL/IAH90RESIv8gDw////Ii//AAAAAAD//wAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "julemanden"
+    },
+    "image18": {
+        "data": "hwQDAAMAAACQAAAAGQkAAJAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "snefnug"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",

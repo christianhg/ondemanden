@@ -1,0 +1,548 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+<variables>
+<variable type="KIND_SpriteKind">Modgift</variable>
+</variables>
+<block id="C]FH|V7Bh5PrSd=l[+:^" type="spritesoverlap">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+<value name="otherKind">
+<shadow type="spritekind">
+<field name="MEMBER">Modgift</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_otherSprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">otherSprite</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id="ZsL4xRG+7YsFfw:]-qMM" type="spritedestroy2">
+<value name="sprite">
+<shadow type="variables_get"/>
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" />
+<field name="VALUE">otherSprite</field>
+</block>
+</value>
+<next>
+<block id="^aqzLZL`/jg9g3oUfc,a" type="hudChangeScoreBy">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id=")`D2w2j}?7T1oQx]hfI%" type="music_playable_play">
+<field name="playbackMode">music.PlaybackMode.InBackground</field>
+<value name="toPlay">
+<shadow type="music_melody_playable">
+<field name="melody">music.baDing</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="1sZ.bTDZ7e!LA(vMgdUX" type="spritesoverlap">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+<value name="otherKind">
+<shadow type="spritekind">
+<field name="MEMBER">Enemy</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_otherSprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">otherSprite</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id="@k=D|UB,`.6M[Nj[4$H{" type="spritedestroy2">
+<value name="sprite">
+<shadow type="variables_get"/>
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" />
+<field name="VALUE">otherSprite</field>
+</block>
+</value>
+<next>
+<block id="!PbUXU[PyRK87*g,67Be" type="hudChangeLifeBy">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+<next>
+<block id="EdzT!QSg$3G03gJ-6SS." type="camerashake">
+<value name="amplitude">
+<shadow type="math_number_minmax">
+<mutation min="1" max="8" label="Amplitude" />
+<field name="SLIDER">4</field>
+</shadow>
+</value>
+<value name="duration">
+<shadow type="timePicker">
+<field name="ms">300</field>
+</shadow>
+</value>
+<next>
+<block id="g5;g_/s8}`qQZfNNv{}U" type="music_playable_play">
+<field name="playbackMode">music.PlaybackMode.InBackground</field>
+<value name="toPlay">
+<shadow type="music_melody_playable">
+<field name="melody">music.smallCrash</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id=")op%+djo_(B]t@p3khTV" type="spritesoverlap">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+<value name="otherKind">
+<shadow type="spritekind">
+<field name="MEMBER">Food</field>
+</shadow>
+</value>
+<value name="HANDLER_DRAG_PARAM_sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="HANDLER_DRAG_PARAM_otherSprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" duplicateondrag="true" />
+<field name="VALUE">otherSprite</field>
+</block>
+</value>
+<statement name="HANDLER">
+<block id="$u`T(VIC-vM`an@5$2Ub" type="spritedestroy2">
+<value name="sprite">
+<shadow type="variables_get"/>
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" />
+<field name="VALUE">otherSprite</field>
+</block>
+</value>
+<next>
+<block id="fHK[oJY~H{iwr:,%yNt`" type="hudChangeLifeBy">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block id="VBxtIk7d)qvX(UNAlGpY" type="startEffectOnSprite">
+<mutation _expanded="1" />
+<field name="effect">effects.hearts</field>
+<value name="sprite">
+<block type="argument_reporter_custom">
+<mutation typename="Sprite" />
+<field name="VALUE">sprite</field>
+</block>
+</value>
+<value name="duration">
+<shadow type="timePicker">
+<field name="ms">500</field>
+</shadow>
+</value>
+<next>
+<block id=":Eqedff}pM-WQenWD]sT" type="music_playable_play">
+<field name="playbackMode">music.PlaybackMode.InBackground</field>
+<value name="toPlay">
+<shadow type="music_melody_playable">
+<field name="melody">music.powerUp</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block id="NXSyh)]b~gnwv)?d+g%p" type="gameinterval">
+<value name="period">
+<shadow type="timePicker">
+<field name="ms">2000</field>
+</shadow>
+</value>
+<statement name="HANDLER">
+<block id="_!Y=[2QE[j6o[{xbL[#t" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="lists_length">
+<value name="VALUE">
+<block type="allOfKind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Modgift</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">5</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="v[UnGDwlCO4bOMw5|]#I" type="variables_set">
+<field name="VAR">modgift</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;modgift&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Modgift</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="=1!p6:hKRDRW5visZ7OY" type="mapplaceonrandomtile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">modgift</field>
+</shadow>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">sne</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="oBR;tRV/$(EOjIi0L};$" type="gameinterval">
+<value name="period">
+<shadow type="timePicker">
+<field name="ms">2000</field>
+</shadow>
+</value>
+<statement name="HANDLER">
+<block id=";*j^PUl7[OIrqEG!kxgj" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="lists_length">
+<value name="VALUE">
+<block type="allOfKind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Enemy</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">6</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="Es/Qof_P2$ya[n*GxO-M" type="variables_set">
+<field name="VAR">nisse</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;nisse&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Enemy</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="=+%iu.j/?eV!Qj0}H$fn" type="spritesetsetflag">
+<field name="flag">SpriteFlag.GhostThroughWalls</field>
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">nisse</field>
+</block>
+</value>
+<value name="on">
+<shadow type="toggleOnOff">
+<field name="on">true</field>
+</shadow>
+</value>
+<next>
+<block id="9#m/0vt+I;Y,VBfT1g%s" type="mapplaceonrandomtile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">nisse</field>
+</shadow>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">portal</field>
+</shadow>
+</value>
+<next>
+<block id="*ld]c5`Y)z0^9tJCw+On" type="spriteFollowOtherSprite">
+<mutation _expanded="1" />
+<value name="sprite">
+<block type="variables_get">
+<field name="VAR">nisse</field>
+</block>
+</value>
+<value name="target">
+<shadow type="variables_get">
+<field name="VAR">helt</field>
+</shadow>
+</value>
+<value name="speed">
+<shadow type="math_number">
+<field name="NUM">40</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="4mkwYk1:a^4wvu`N[W;3" type="gameinterval">
+<value name="period">
+<shadow type="timePicker">
+<field name="ms">10000</field>
+</shadow>
+</value>
+<statement name="HANDLER">
+<block id="0y8`a00n(sOr*f*)?E5*" type="controls_if">
+<mutation elseif="0" else="0" />
+<value name="IF0">
+<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
+<block type="logic_compare">
+<field name="OP">LT</field>
+<value name="A">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="lists_length">
+<value name="VALUE">
+<block type="allOfKind">
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Food</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block id="0n2DbrLXJes02UrlFr_@" type="variables_set">
+<field name="VAR">pebernoed</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;pebernoed&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Food</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="r@H#CmL2GvLhqwR.ymBU" type="mapplaceonrandomtile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">pebernoed</field>
+</shadow>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">sne</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block id="xRRgvHNlG#rZ^u`HECiY" type="pxt-on-start">
+<statement name="HANDLER">
+<block id=".+?A,guLJitg]pm;]T#Q" type="variables_set">
+<field name="VAR">helt</field>
+<value name="VALUE">
+<shadow type="math_number"><field name="NUM">0</field></shadow>
+<block type="spritescreate">
+<value name="img">
+<shadow type="screen_image_picker">
+<field name="img">assets.image&#96;helt&#96;</field>
+</shadow>
+</value>
+<value name="kind">
+<shadow type="spritekind">
+<field name="MEMBER">Player</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block id="}|!v)~j3DO=-!D+-rDfK" type="game_control_sprite">
+<mutation _expanded="2" />
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">helt</field>
+</shadow>
+</value>
+<value name="vx">
+<shadow type="spriteSpeedPicker">
+<field name="speed">80</field>
+</shadow>
+</value>
+<value name="vy">
+<shadow type="spriteSpeedPicker">
+<field name="speed">80</field>
+</shadow>
+</value>
+<next>
+<block id="N~A@N$6g*YfxvW[hMx=v" type="set_current_tilemap">
+<value name="tilemap">
+<shadow type="tiles_tilemap_editor">
+<field name="tilemap">tilemap&#96;bane1&#96;</field>
+</shadow>
+</value>
+<next>
+<block id="3y}-wk2h~HhiGz$]u36k" type="mapplaceontile">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">helt</field>
+</shadow>
+</value>
+<value name="loc">
+<shadow type="mapgettile">
+<value name="col">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+<value name="row">
+<shadow type="math_number">
+<field name="NUM">2</field>
+</shadow>
+</value>
+</shadow>
+</value>
+<next>
+<block id=")N`iaE*Vj5FxTxs@fyZM" type="camerafollow">
+<value name="sprite">
+<shadow type="variables_get">
+<field name="VAR">helt</field>
+</shadow>
+</value>
+<next>
+<block id="hpJ:)KdMyq:KStx!F?Zr" type="hudsetScore">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block id="$=U%[RN_vMX3]c1KoF,R" type="hudSetLife">
+<value name="value">
+<shadow type="math_number">
+<field name="NUM">3</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</xml>
