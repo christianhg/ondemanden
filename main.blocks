@@ -2,305 +2,8 @@
 <variables>
 <variable type="KIND_SpriteKind">Modgift</variable>
 <variable type="KIND_SpriteKind">Snemand</variable>
-<variable type="KIND_SpriteKind">Julemand</variable>
-<variable type="KIND_SpriteKind">Snefnug</variable>
 </variables>
-<block id="b1" type="function_definition">
-<mutation name="placer" >
-<arg name="ting" type="Sprite" id="b2" />
-</mutation>
-<statement name="STACK">
-<block id="b3" type="controls_if">
-<mutation elseif="0" else="1" />
-<value name="IF0">
-<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
-<block type="logic_compare">
-<field name="OP">EQ</field>
-<value name="A">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="variables_get">
-<field name="VAR">bane</field>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-</value>
-</block>
-</value>
-<statement name="DO0">
-<block id="b4" type="mapplaceonrandomtile">
-<value name="sprite">
-<shadow type="variables_get"/>
-<block type="argument_reporter_custom">
-<mutation typename="Sprite" />
-<field name="VALUE">ting</field>
-</block>
-</value>
-<value name="tile">
-<shadow type="tileset_tile_picker">
-<field name="tile">sne</field>
-</shadow>
-</value>
-</block>
-</statement>
-<statement name="ELSE">
-<block id="b5" type="mapplaceonrandomtile">
-<value name="sprite">
-<shadow type="variables_get"/>
-<block type="argument_reporter_custom">
-<mutation typename="Sprite" />
-<field name="VALUE">ting</field>
-</block>
-</value>
-<value name="tile">
-<shadow type="tileset_tile_picker">
-<field name="tile">gulv</field>
-</shadow>
-</value>
-</block>
-</statement>
-</block>
-</statement>
-</block>
-<block id="b6" type="spriteshittile">
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Player</field>
-</shadow>
-</value>
-<value name="tile">
-<shadow type="tileset_tile_picker">
-<field name="tile">doer</field>
-</shadow>
-</value>
-<value name="HANDLER_DRAG_PARAM_sprite">
-<block type="argument_reporter_custom">
-<mutation typename="Sprite" duplicateondrag="true" />
-<field name="VALUE">sprite</field>
-</block>
-</value>
-<value name="HANDLER_DRAG_PARAM_location">
-<block type="argument_reporter_custom">
-<mutation typename="tiles.Location" duplicateondrag="true" />
-<field name="VALUE">location</field>
-</block>
-</value>
-<statement name="HANDLER">
-<block id="b7" type="controls_if">
-<mutation elseif="0" else="1" />
-<value name="IF0">
-<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
-<block type="logic_compare">
-<field name="OP">GTE</field>
-<value name="A">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="hudScore">
-</block>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">10</field>
-</shadow>
-</value>
-</block>
-</value>
-<statement name="DO0">
-<block id="b8" type="variables_set">
-<field name="VAR">bane</field>
-<value name="VALUE">
-<shadow type="math_number">
-<field name="NUM">2</field>
-</shadow>
-</value>
-<next>
-<block id="b9" type="sprites_destroy_all_sprites_of_kind">
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Enemy</field>
-</shadow>
-</value>
-<next>
-<block id="b10" type="sprites_destroy_all_sprites_of_kind">
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Snemand</field>
-</shadow>
-</value>
-<next>
-<block id="b11" type="sprites_destroy_all_sprites_of_kind">
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Modgift</field>
-</shadow>
-</value>
-<next>
-<block id="b12" type="sprites_destroy_all_sprites_of_kind">
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Food</field>
-</shadow>
-</value>
-<next>
-<block id="b13" type="set_current_tilemap">
-<value name="tilemap">
-<shadow type="tiles_tilemap_editor">
-<field name="tilemap">tilemap&#96;bane2&#96;</field>
-</shadow>
-</value>
-<next>
-<block id="b14" type="mapplaceontile">
-<value name="sprite">
-<shadow type="variables_get">
-<field name="VAR">helt</field>
-</shadow>
-</value>
-<value name="loc">
-<shadow type="mapgettile">
-<value name="col">
-<shadow type="math_number">
-<field name="NUM">2</field>
-</shadow>
-</value>
-<value name="row">
-<shadow type="math_number">
-<field name="NUM">2</field>
-</shadow>
-</value>
-</shadow>
-</value>
-<next>
-<block id="b15" type="variables_set">
-<field name="VAR">ondemanden</field>
-<value name="VALUE">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="spritescreate">
-<value name="img">
-<shadow type="screen_image_picker">
-<field name="img">assets.image&#96;ondemanden&#96;</field>
-</shadow>
-</value>
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Julemand</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block id="b16" type="mapplaceontile">
-<value name="sprite">
-<shadow type="variables_get">
-<field name="VAR">ondemanden</field>
-</shadow>
-</value>
-<value name="loc">
-<shadow type="mapgettile">
-<value name="col">
-<shadow type="math_number">
-<field name="NUM">14</field>
-</shadow>
-</value>
-<value name="row">
-<shadow type="math_number">
-<field name="NUM">10</field>
-</shadow>
-</value>
-</shadow>
-</value>
-<next>
-<block id="b17" type="spriteFollowOtherSprite">
-<mutation _expanded="1" />
-<value name="sprite">
-<block type="variables_get">
-<field name="VAR">ondemanden</field>
-</block>
-</value>
-<value name="target">
-<shadow type="variables_get">
-<field name="VAR">helt</field>
-</shadow>
-</value>
-<value name="speed">
-<shadow type="math_number">
-<field name="NUM">20</field>
-</shadow>
-</value>
-<next>
-<block id="b18" type="spritesaytext">
-<mutation _expanded="2" />
-<value name="this">
-<shadow type="variables_get">
-<field name="VAR">helt</field>
-</shadow>
-</value>
-<value name="text">
-<shadow type="text">
-<field name="TEXT">Find Ondemanden!</field>
-</shadow>
-</value>
-<value name="timeOnScreen">
-<shadow type="timePicker">
-<field name="ms">2000</field>
-</shadow>
-</value>
-<value name="animated">
-<shadow type="logic_boolean">
-<field name="BOOL">FALSE</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-<statement name="ELSE">
-<block id="b19" type="spritesaytext">
-<mutation _expanded="2" />
-<value name="this">
-<shadow type="variables_get">
-<field name="VAR">helt</field>
-</shadow>
-</value>
-<value name="text">
-<shadow type="text">
-<field name="TEXT">D&#248;ren er l&#229;st! Saml 10 modgift.</field>
-</shadow>
-</value>
-<value name="timeOnScreen">
-<shadow type="timePicker">
-<field name="ms">500</field>
-</shadow>
-</value>
-<value name="animated">
-<shadow type="logic_boolean">
-<field name="BOOL">FALSE</field>
-</shadow>
-</value>
-</block>
-</statement>
-</block>
-</statement>
-</block>
-<block id="b20" type="spritesoverlap">
+<block id="b1" type="spritesoverlap">
 <value name="kind">
 <shadow type="spritekind">
 <field name="MEMBER">Player</field>
@@ -324,7 +27,7 @@
 </block>
 </value>
 <statement name="HANDLER">
-<block id="b21" type="spritedestroy2">
+<block id="b2" type="spritedestroy2">
 <value name="sprite">
 <shadow type="variables_get"/>
 <block type="argument_reporter_custom">
@@ -333,14 +36,14 @@
 </block>
 </value>
 <next>
-<block id="b22" type="hudChangeScoreBy">
+<block id="b3" type="hudChangeScoreBy">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">1</field>
 </shadow>
 </value>
 <next>
-<block id="b23" type="music_playable_play">
+<block id="b4" type="music_playable_play">
 <field name="playbackMode">music.PlaybackMode.InBackground</field>
 <value name="toPlay">
 <shadow type="music_melody_playable">
@@ -354,7 +57,7 @@
 </block>
 </statement>
 </block>
-<block id="b24" type="spritesoverlap">
+<block id="b5" type="spritesoverlap">
 <value name="kind">
 <shadow type="spritekind">
 <field name="MEMBER">Player</field>
@@ -378,7 +81,7 @@
 </block>
 </value>
 <statement name="HANDLER">
-<block id="b25" type="spritedestroy2">
+<block id="b6" type="spritedestroy2">
 <value name="sprite">
 <shadow type="variables_get"/>
 <block type="argument_reporter_custom">
@@ -387,14 +90,14 @@
 </block>
 </value>
 <next>
-<block id="b26" type="hudChangeLifeBy">
+<block id="b7" type="hudChangeLifeBy">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">-1</field>
 </shadow>
 </value>
 <next>
-<block id="b27" type="camerashake">
+<block id="b8" type="camerashake">
 <value name="amplitude">
 <shadow type="math_number_minmax">
 <mutation min="1" max="8" label="Amplitude" />
@@ -407,7 +110,7 @@
 </shadow>
 </value>
 <next>
-<block id="b28" type="music_playable_play">
+<block id="b9" type="music_playable_play">
 <field name="playbackMode">music.PlaybackMode.InBackground</field>
 <value name="toPlay">
 <shadow type="music_melody_playable">
@@ -423,7 +126,7 @@
 </block>
 </statement>
 </block>
-<block id="b29" type="spritesoverlap">
+<block id="b10" type="spritesoverlap">
 <value name="kind">
 <shadow type="spritekind">
 <field name="MEMBER">Player</field>
@@ -447,7 +150,7 @@
 </block>
 </value>
 <statement name="HANDLER">
-<block id="b30" type="spritedestroy2">
+<block id="b11" type="spritedestroy2">
 <value name="sprite">
 <shadow type="variables_get"/>
 <block type="argument_reporter_custom">
@@ -456,14 +159,14 @@
 </block>
 </value>
 <next>
-<block id="b31" type="hudChangeLifeBy">
+<block id="b12" type="hudChangeLifeBy">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">-1</field>
 </shadow>
 </value>
 <next>
-<block id="b32" type="camerashake">
+<block id="b13" type="camerashake">
 <value name="amplitude">
 <shadow type="math_number_minmax">
 <mutation min="1" max="8" label="Amplitude" />
@@ -476,7 +179,7 @@
 </shadow>
 </value>
 <next>
-<block id="b33" type="music_playable_play">
+<block id="b14" type="music_playable_play">
 <field name="playbackMode">music.PlaybackMode.InBackground</field>
 <value name="toPlay">
 <shadow type="music_melody_playable">
@@ -492,7 +195,7 @@
 </block>
 </statement>
 </block>
-<block id="b34" type="spritesoverlap">
+<block id="b15" type="spritesoverlap">
 <value name="kind">
 <shadow type="spritekind">
 <field name="MEMBER">Player</field>
@@ -516,7 +219,7 @@
 </block>
 </value>
 <statement name="HANDLER">
-<block id="b35" type="spritedestroy2">
+<block id="b16" type="spritedestroy2">
 <value name="sprite">
 <shadow type="variables_get"/>
 <block type="argument_reporter_custom">
@@ -525,14 +228,14 @@
 </block>
 </value>
 <next>
-<block id="b36" type="hudChangeLifeBy">
+<block id="b17" type="hudChangeLifeBy">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">1</field>
 </shadow>
 </value>
 <next>
-<block id="b37" type="startEffectOnSprite">
+<block id="b18" type="startEffectOnSprite">
 <mutation _expanded="1" />
 <field name="effect">effects.hearts</field>
 <value name="sprite">
@@ -547,7 +250,7 @@
 </shadow>
 </value>
 <next>
-<block id="b38" type="music_playable_play">
+<block id="b19" type="music_playable_play">
 <field name="playbackMode">music.PlaybackMode.InBackground</field>
 <value name="toPlay">
 <shadow type="music_melody_playable">
@@ -563,11 +266,11 @@
 </block>
 </statement>
 </block>
-<block id="b39" type="keyonevent">
+<block id="b20" type="keyonevent">
 <field name="button">controller.A</field>
 <field name="event">ControllerButtonEvent.Pressed</field>
 <statement name="HANDLER">
-<block id="b40" type="variables_set">
+<block id="b21" type="variables_set">
 <field name="VAR">snebold</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -619,7 +322,7 @@
 </block>
 </value>
 <next>
-<block id="b41" type="spritesetsetflag">
+<block id="b22" type="spritesetsetflag">
 <field name="flag">SpriteFlag.DestroyOnWall</field>
 <value name="sprite">
 <block type="variables_get">
@@ -632,7 +335,7 @@
 </shadow>
 </value>
 <next>
-<block id="b42" type="music_playable_play">
+<block id="b23" type="music_playable_play">
 <field name="playbackMode">music.PlaybackMode.InBackground</field>
 <value name="toPlay">
 <shadow type="music_melody_playable">
@@ -646,7 +349,7 @@
 </block>
 </statement>
 </block>
-<block id="b43" type="spritesoverlap">
+<block id="b24" type="spritesoverlap">
 <value name="kind">
 <shadow type="spritekind">
 <field name="MEMBER">Projectile</field>
@@ -670,7 +373,7 @@
 </block>
 </value>
 <statement name="HANDLER">
-<block id="b44" type="spritedestroy2">
+<block id="b25" type="spritedestroy2">
 <value name="sprite">
 <shadow type="variables_get"/>
 <block type="argument_reporter_custom">
@@ -679,7 +382,7 @@
 </block>
 </value>
 <next>
-<block id="b45" type="controls_if">
+<block id="b26" type="controls_if">
 <mutation elseif="0" else="0" />
 <value name="IF0">
 <shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
@@ -693,7 +396,7 @@
 </block>
 </value>
 <statement name="DO0">
-<block id="b46" type="variables_set">
+<block id="b27" type="variables_set">
 <field name="VAR">modgift</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -711,7 +414,7 @@
 </block>
 </value>
 <next>
-<block id="b47" type="spritesetpos">
+<block id="b28" type="spritesetpos">
 <value name="sprite">
 <block type="variables_get">
 <field name="VAR">modgift</field>
@@ -746,7 +449,7 @@
 </block>
 </statement>
 <next>
-<block id="b48" type="spritedestroy2">
+<block id="b29" type="spritedestroy2">
 <mutation _expanded="2" />
 <field name="effect">effects.disintegrate</field>
 <value name="sprite">
@@ -768,165 +471,9 @@
 </block>
 </statement>
 </block>
-<block id="b49" type="spritesoverlap">
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Player</field>
-</shadow>
-</value>
-<value name="otherKind">
-<shadow type="spritekind">
-<field name="MEMBER">Julemand</field>
-</shadow>
-</value>
-<value name="HANDLER_DRAG_PARAM_sprite">
-<block type="argument_reporter_custom">
-<mutation typename="Sprite" duplicateondrag="true" />
-<field name="VALUE">sprite</field>
-</block>
-</value>
-<value name="HANDLER_DRAG_PARAM_otherSprite">
-<block type="argument_reporter_custom">
-<mutation typename="Sprite" duplicateondrag="true" />
-<field name="VALUE">otherSprite</field>
-</block>
-</value>
+<block id="b30" type="gameupdate">
 <statement name="HANDLER">
-<block id="b50" type="controls_if">
-<mutation elseif="0" else="1" />
-<value name="IF0">
-<shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
-<block type="logic_compare">
-<field name="OP">GTE</field>
-<value name="A">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="hudScore">
-</block>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">20</field>
-</shadow>
-</value>
-</block>
-</value>
-<statement name="DO0">
-<block id="b51" type="spritesetimage">
-<value name="sprite">
-<block type="argument_reporter_custom">
-<mutation typename="Sprite" />
-<field name="VALUE">otherSprite</field>
-</block>
-</value>
-<value name="img">
-<shadow type="screen_image_picker">
-<field name="img">assets.image&#96;julemanden&#96;</field>
-</shadow>
-</value>
-<next>
-<block id="b52" type="gameSplash">
-<mutation _expanded="1" />
-<value name="title">
-<shadow type="text">
-<field name="TEXT">Ondemanden er blevet</field>
-</shadow>
-</value>
-<value name="subtitle">
-<shadow type="text">
-<field name="TEXT">til Julemanden igen!</field>
-</shadow>
-</value>
-<next>
-<block id="b53" type="gameOver2">
-<value name="win">
-<shadow type="toggleWinLose">
-<field name="win">true</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-<statement name="ELSE">
-<block id="b54" type="hudChangeLifeBy">
-<value name="value">
-<shadow type="math_number">
-<field name="NUM">-1</field>
-</shadow>
-</value>
-<next>
-<block id="b55" type="camerashake">
-<value name="amplitude">
-<shadow type="math_number_minmax">
-<mutation min="1" max="8" label="Amplitude" />
-<field name="SLIDER">4</field>
-</shadow>
-</value>
-<value name="duration">
-<shadow type="timePicker">
-<field name="ms">300</field>
-</shadow>
-</value>
-<next>
-<block id="b56" type="mapplaceontile">
-<value name="sprite">
-<shadow type="variables_get">
-<field name="VAR">helt</field>
-</shadow>
-</value>
-<value name="loc">
-<shadow type="mapgettile">
-<value name="col">
-<shadow type="math_number">
-<field name="NUM">2</field>
-</shadow>
-</value>
-<value name="row">
-<shadow type="math_number">
-<field name="NUM">2</field>
-</shadow>
-</value>
-</shadow>
-</value>
-<next>
-<block id="b57" type="spritesaytext">
-<mutation _expanded="2" />
-<value name="this">
-<shadow type="variables_get">
-<field name="VAR">helt</field>
-</shadow>
-</value>
-<value name="text">
-<shadow type="text">
-<field name="TEXT">Jeg mangler modgift!</field>
-</shadow>
-</value>
-<value name="timeOnScreen">
-<shadow type="timePicker">
-<field name="ms">2000</field>
-</shadow>
-</value>
-<value name="animated">
-<shadow type="logic_boolean">
-<field name="BOOL">FALSE</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-</block>
-</statement>
-</block>
-<block id="b58" type="gameupdate">
-<statement name="HANDLER">
-<block id="b59" type="controls_if">
+<block id="b31" type="controls_if">
 <mutation elseif="0" else="0" />
 <value name="IF0">
 <shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
@@ -979,7 +526,7 @@
 </block>
 </value>
 <statement name="DO0">
-<block id="b60" type="variables_set">
+<block id="b32" type="variables_set">
 <field name="VAR">retningX</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -993,7 +540,7 @@
 </block>
 </value>
 <next>
-<block id="b61" type="variables_set">
+<block id="b33" type="variables_set">
 <field name="VAR">retningY</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -1013,14 +560,14 @@
 </block>
 </statement>
 </block>
-<block id="b62" type="gameinterval">
+<block id="b34" type="gameinterval">
 <value name="period">
 <shadow type="timePicker">
 <field name="ms">2000</field>
 </shadow>
 </value>
 <statement name="HANDLER">
-<block id="b63" type="controls_if">
+<block id="b35" type="controls_if">
 <mutation elseif="0" else="0" />
 <value name="IF0">
 <shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
@@ -1048,7 +595,7 @@
 </block>
 </value>
 <statement name="DO0">
-<block id="b64" type="variables_set">
+<block id="b36" type="variables_set">
 <field name="VAR">modgift</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -1066,14 +613,16 @@
 </block>
 </value>
 <next>
-<block id="b65" type="function_call">
-<mutation name="placer" >
-<arg name="ting" type="Sprite" id="b2" />
-</mutation>
-<value name="b2">
-<block type="variables_get">
+<block id="b37" type="mapplaceonrandomtile">
+<value name="sprite">
+<shadow type="variables_get">
 <field name="VAR">modgift</field>
-</block>
+</shadow>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">sne</field>
+</shadow>
 </value>
 </block>
 </next>
@@ -1082,14 +631,14 @@
 </block>
 </statement>
 </block>
-<block id="b66" type="gameinterval">
+<block id="b38" type="gameinterval">
 <value name="period">
 <shadow type="timePicker">
 <field name="ms">2000</field>
 </shadow>
 </value>
 <statement name="HANDLER">
-<block id="b67" type="controls_if">
+<block id="b39" type="controls_if">
 <mutation elseif="0" else="0" />
 <value name="IF0">
 <shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
@@ -1117,7 +666,7 @@
 </block>
 </value>
 <statement name="DO0">
-<block id="b68" type="variables_set">
+<block id="b40" type="variables_set">
 <field name="VAR">nisse</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -1135,7 +684,7 @@
 </block>
 </value>
 <next>
-<block id="b69" type="spritesetsetflag">
+<block id="b41" type="spritesetsetflag">
 <field name="flag">SpriteFlag.GhostThroughWalls</field>
 <value name="sprite">
 <block type="variables_get">
@@ -1148,7 +697,7 @@
 </shadow>
 </value>
 <next>
-<block id="b70" type="mapplaceonrandomtile">
+<block id="b42" type="mapplaceonrandomtile">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">nisse</field>
@@ -1160,7 +709,7 @@
 </shadow>
 </value>
 <next>
-<block id="b71" type="spriteFollowOtherSprite">
+<block id="b43" type="spriteFollowOtherSprite">
 <mutation _expanded="1" />
 <value name="sprite">
 <block type="variables_get">
@@ -1173,31 +722,9 @@
 </shadow>
 </value>
 <value name="speed">
-<block type="math_arithmetic">
-<field name="OP">ADD</field>
-<value name="A">
 <shadow type="math_number">
-<field name="NUM">30</field>
+<field name="NUM">40</field>
 </shadow>
-</value>
-<value name="B">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="math_arithmetic">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="variables_get">
-<field name="VAR">bane</field>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">10</field>
-</shadow>
-</value>
-</block>
-</value>
-</block>
 </value>
 </block>
 </next>
@@ -1210,14 +737,14 @@
 </block>
 </statement>
 </block>
-<block id="b72" type="gameinterval">
+<block id="b44" type="gameinterval">
 <value name="period">
 <shadow type="timePicker">
 <field name="ms">5000</field>
 </shadow>
 </value>
 <statement name="HANDLER">
-<block id="b73" type="controls_if">
+<block id="b45" type="controls_if">
 <mutation elseif="0" else="0" />
 <value name="IF0">
 <shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
@@ -1245,7 +772,7 @@
 </block>
 </value>
 <statement name="DO0">
-<block id="b74" type="variables_set">
+<block id="b46" type="variables_set">
 <field name="VAR">snemand</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -1263,7 +790,7 @@
 </block>
 </value>
 <next>
-<block id="b75" type="spritesetsetflag">
+<block id="b47" type="spritesetsetflag">
 <field name="flag">SpriteFlag.GhostThroughWalls</field>
 <value name="sprite">
 <block type="variables_get">
@@ -1276,7 +803,7 @@
 </shadow>
 </value>
 <next>
-<block id="b76" type="mapplaceonrandomtile">
+<block id="b48" type="mapplaceonrandomtile">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">snemand</field>
@@ -1288,7 +815,7 @@
 </shadow>
 </value>
 <next>
-<block id="b77" type="spriteFollowOtherSprite">
+<block id="b49" type="spriteFollowOtherSprite">
 <mutation _expanded="1" />
 <value name="sprite">
 <block type="variables_get">
@@ -1316,14 +843,14 @@
 </block>
 </statement>
 </block>
-<block id="b78" type="gameinterval">
+<block id="b50" type="gameinterval">
 <value name="period">
 <shadow type="timePicker">
 <field name="ms">10000</field>
 </shadow>
 </value>
 <statement name="HANDLER">
-<block id="b79" type="controls_if">
+<block id="b51" type="controls_if">
 <mutation elseif="0" else="0" />
 <value name="IF0">
 <shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow>
@@ -1351,7 +878,7 @@
 </block>
 </value>
 <statement name="DO0">
-<block id="b80" type="variables_set">
+<block id="b52" type="variables_set">
 <field name="VAR">pebernoed</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -1369,14 +896,16 @@
 </block>
 </value>
 <next>
-<block id="b81" type="function_call">
-<mutation name="placer" >
-<arg name="ting" type="Sprite" id="b2" />
-</mutation>
-<value name="b2">
-<block type="variables_get">
+<block id="b53" type="mapplaceonrandomtile">
+<value name="sprite">
+<shadow type="variables_get">
 <field name="VAR">pebernoed</field>
-</block>
+</shadow>
+</value>
+<value name="tile">
+<shadow type="tileset_tile_picker">
+<field name="tile">sne</field>
+</shadow>
 </value>
 </block>
 </next>
@@ -1385,162 +914,9 @@
 </block>
 </statement>
 </block>
-<block id="b82" type="gameinterval">
-<value name="period">
-<shadow type="timePicker">
-<field name="ms">300</field>
-</shadow>
-</value>
+<block id="b54" type="pxt-on-start">
 <statement name="HANDLER">
-<block id="b83" type="variables_set">
-<field name="VAR">snefnug</field>
-<value name="VALUE">
-<shadow type="math_number"><field name="NUM">0</field></shadow>
-<block type="spritescreate">
-<value name="img">
-<shadow type="screen_image_picker">
-<field name="img">assets.image&#96;snefnug&#96;</field>
-</shadow>
-</value>
-<value name="kind">
-<shadow type="spritekind">
-<field name="MEMBER">Snefnug</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block id="b84" type="spritesetsetflag">
-<field name="flag">SpriteFlag.RelativeToCamera</field>
-<value name="sprite">
-<block type="variables_get">
-<field name="VAR">snefnug</field>
-</block>
-</value>
-<value name="on">
-<shadow type="toggleOnOff">
-<field name="on">true</field>
-</shadow>
-</value>
-<next>
-<block id="b85" type="spritesetsetflag">
-<field name="flag">SpriteFlag.Ghost</field>
-<value name="sprite">
-<block type="variables_get">
-<field name="VAR">snefnug</field>
-</block>
-</value>
-<value name="on">
-<shadow type="toggleOnOff">
-<field name="on">true</field>
-</shadow>
-</value>
-<next>
-<block id="b86" type="spritesetpos">
-<value name="sprite">
-<block type="variables_get">
-<field name="VAR">snefnug</field>
-</block>
-</value>
-<value name="x">
-<shadow type="positionPicker"/>
-<block type="device_random">
-<value name="min">
-<shadow type="math_number">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="limit">
-<shadow type="math_number">
-<field name="NUM">160</field>
-</shadow>
-</value>
-</block>
-</value>
-<value name="y">
-<shadow type="positionPicker">
-<field name="index">0</field>
-</shadow>
-</value>
-<next>
-<block id="b87" type="Sprite_blockCombine_set">
-<field name="property">Sprite.vy&#64;set</field>
-<value name="mySprite">
-<block type="variables_get">
-<field name="VAR">snefnug</field>
-</block>
-</value>
-<value name="value">
-<block type="device_random">
-<value name="min">
-<shadow type="math_number">
-<field name="NUM">20</field>
-</shadow>
-</value>
-<value name="limit">
-<shadow type="math_number">
-<field name="NUM">50</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block id="b88" type="Sprite_blockCombine_set">
-<field name="property">Sprite.lifespan</field>
-<value name="mySprite">
-<block type="variables_get">
-<field name="VAR">snefnug</field>
-</block>
-</value>
-<value name="value">
-<shadow type="math_number">
-<field name="NUM">6000</field>
-</shadow>
-</value>
-<next>
-<block id="b89" type="Sprite_blockCombine_set">
-<field name="property">Sprite.z</field>
-<value name="mySprite">
-<block type="variables_get">
-<field name="VAR">snefnug</field>
-</block>
-</value>
-<value name="value">
-<shadow type="math_number">
-<field name="NUM">100</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-</block>
-<block id="b90" type="pxt-on-start">
-<statement name="HANDLER">
-<block id="b91" type="gameSplash">
-<mutation _expanded="1" />
-<value name="title">
-<shadow type="text">
-<field name="TEXT">Ondemanden</field>
-</shadow>
-</value>
-<value name="subtitle">
-<shadow type="text">
-<field name="TEXT">Red julen!</field>
-</shadow>
-</value>
-<next>
-<block id="b92" type="variables_set">
+<block id="b55" type="variables_set">
 <field name="VAR">helt</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -1558,7 +934,7 @@
 </block>
 </value>
 <next>
-<block id="b93" type="game_control_sprite">
+<block id="b56" type="game_control_sprite">
 <mutation _expanded="2" />
 <value name="sprite">
 <shadow type="variables_get">
@@ -1576,14 +952,14 @@
 </shadow>
 </value>
 <next>
-<block id="b94" type="set_current_tilemap">
+<block id="b57" type="set_current_tilemap">
 <value name="tilemap">
 <shadow type="tiles_tilemap_editor">
 <field name="tilemap">tilemap&#96;bane1&#96;</field>
 </shadow>
 </value>
 <next>
-<block id="b95" type="mapplaceontile">
+<block id="b58" type="mapplaceontile">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">helt</field>
@@ -1604,36 +980,28 @@
 </shadow>
 </value>
 <next>
-<block id="b96" type="camerafollow">
+<block id="b59" type="camerafollow">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">helt</field>
 </shadow>
 </value>
 <next>
-<block id="b97" type="hudsetScore">
+<block id="b60" type="hudsetScore">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">0</field>
 </shadow>
 </value>
 <next>
-<block id="b98" type="hudSetLife">
+<block id="b61" type="hudSetLife">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">3</field>
 </shadow>
 </value>
 <next>
-<block id="b99" type="variables_set">
-<field name="VAR">bane</field>
-<value name="VALUE">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block id="b100" type="variables_set">
+<block id="b62" type="variables_set">
 <field name="VAR">retningX</field>
 <value name="VALUE">
 <shadow type="math_number">
@@ -1641,17 +1009,13 @@
 </shadow>
 </value>
 <next>
-<block id="b101" type="variables_set">
+<block id="b63" type="variables_set">
 <field name="VAR">retningY</field>
 <value name="VALUE">
 <shadow type="math_number">
 <field name="NUM">-80</field>
 </shadow>
 </value>
-</block>
-</next>
-</block>
-</next>
 </block>
 </next>
 </block>
