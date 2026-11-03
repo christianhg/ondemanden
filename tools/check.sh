@@ -78,5 +78,15 @@ if [ -n "$gray" ]; then
     python3 -c 'import html,sys; print(html.unescape(sys.stdin.read()))' <<<"$gray"
     exit 1
 fi
-cp "$proj/main.blocks" "$blocks_out"
+# Block ids are random per run; number them so main.blocks is stable.
+python3 - "$proj/main.blocks" "$blocks_out" <<'PY'
+import re, sys
+s = open(sys.argv[1]).read()
+ids = {}
+for old in re.findall(r'\bid="([^"]*)"', s):
+    ids.setdefault(old, f"b{len(ids) + 1}")
+# Function arguments are referenced by id from name="..." on call sites.
+s = re.sub(r'\b(id|name)="([^"]*)"', lambda m: f'{m.group(1)}="{ids.get(m.group(2), m.group(2))}"', s)
+open(sys.argv[2], "w").write(s)
+PY
 echo "blocks ok ($(grep -o '<block ' "$blocks_out" | wc -l | tr -d ' ') blocks)"

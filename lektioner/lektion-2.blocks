@@ -2,7 +2,7 @@
 <variables>
 <variable type="KIND_SpriteKind">Modgift</variable>
 </variables>
-<block id="Dyg5qWK|0?=Im6MP;]cV" type="spritesoverlap">
+<block id="b1" type="spritesoverlap">
 <value name="kind">
 <shadow type="spritekind">
 <field name="MEMBER">Player</field>
@@ -26,7 +26,7 @@
 </block>
 </value>
 <statement name="HANDLER">
-<block id="t{F2kBP5-t42tk)F+?j=" type="spritedestroy2">
+<block id="b2" type="spritedestroy2">
 <value name="sprite">
 <shadow type="variables_get"/>
 <block type="argument_reporter_custom">
@@ -35,14 +35,14 @@
 </block>
 </value>
 <next>
-<block id="DZ(~A#y2aSa{`xCTkhx2" type="hudChangeScoreBy">
+<block id="b3" type="hudChangeScoreBy">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">1</field>
 </shadow>
 </value>
 <next>
-<block id="o?DdUpcPg$i.+iR^AdW%" type="music_playable_play">
+<block id="b4" type="music_playable_play">
 <field name="playbackMode">music.PlaybackMode.InBackground</field>
 <value name="toPlay">
 <shadow type="music_melody_playable">
@@ -56,14 +56,14 @@
 </block>
 </statement>
 </block>
-<block id="SUMEFOHnSco6.@7V=`g-" type="gameinterval">
+<block id="b5" type="gameinterval">
 <value name="period">
 <shadow type="timePicker">
 <field name="ms">2000</field>
 </shadow>
 </value>
 <statement name="HANDLER">
-<block id="6O~|nR(Iu;ihJ,J~%ukc" type="variables_set">
+<block id="b6" type="variables_set">
 <field name="VAR">modgift</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -81,7 +81,7 @@
 </block>
 </value>
 <next>
-<block id="PKa-|EWY16{7./PK-Mp;" type="mapplaceonrandomtile">
+<block id="b7" type="mapplaceonrandomtile">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">modgift</field>
@@ -97,9 +97,9 @@
 </block>
 </statement>
 </block>
-<block id="xRRgvHNlG#rZ^u`HECiY" type="pxt-on-start">
+<block id="b8" type="pxt-on-start">
 <statement name="HANDLER">
-<block id="[SZ(|qfy5`T3[JI4gOno" type="variables_set">
+<block id="b9" type="variables_set">
 <field name="VAR">helt</field>
 <value name="VALUE">
 <shadow type="math_number"><field name="NUM">0</field></shadow>
@@ -117,7 +117,7 @@
 </block>
 </value>
 <next>
-<block id="^Ti0v,cb3%c~Gv$zjx{$" type="game_control_sprite">
+<block id="b10" type="game_control_sprite">
 <mutation _expanded="2" />
 <value name="sprite">
 <shadow type="variables_get">
@@ -135,14 +135,14 @@
 </shadow>
 </value>
 <next>
-<block id="_;4:ZB]e+9Ni3X6fNTGF" type="set_current_tilemap">
+<block id="b11" type="set_current_tilemap">
 <value name="tilemap">
 <shadow type="tiles_tilemap_editor">
 <field name="tilemap">tilemap&#96;bane1&#96;</field>
 </shadow>
 </value>
 <next>
-<block id="B7~a#a,LQ$nS8l|Q6v8)" type="mapplaceontile">
+<block id="b12" type="mapplaceontile">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">helt</field>
@@ -163,14 +163,14 @@
 </shadow>
 </value>
 <next>
-<block id="N8f2$+=2#cut(pjdu)U8" type="camerafollow">
+<block id="b13" type="camerafollow">
 <value name="sprite">
 <shadow type="variables_get">
 <field name="VAR">helt</field>
 </shadow>
 </value>
 <next>
-<block id=";;=WW9fW95JuEclgQEX]" type="hudsetScore">
+<block id="b14" type="hudsetScore">
 <value name="value">
 <shadow type="math_number">
 <field name="NUM">0</field>
